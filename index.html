@@ -102,6 +102,10 @@
     <div class="links">
       <a href="https://t.me/BurgerBr0" target="_blank">Telegram</a>
       <a href="https://vk.com/krasnodon_burger_bro" target="_blank">VK</a>
+      
+      <!-- Кнопка "Добавить в контакты" -->
+      <a href="#" id="add-contact-1" style="background: #ff9800;">➕ BurgerBro ул.Пионерская</a>
+      <a href="#" id="add-contact-2" style="background: #4caf50;">➕ BurgerBro ул.Котова</a>
     </div>
 
     <footer>
@@ -111,5 +115,81 @@
       Все права защищены
     </footer>
   </div>
-</body>
+<script>
+  // === Контакт 1: Ты ===
+  document.getElementById('add-contact-1').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const contact = {
+      firstName: "BurgerBro ул.Пионерская",
+      lastName: "",
+      phone1: "+79590298419",
+//      phone2: "+79590298419",
+      email: "",
+      website: "",
+      companyName: "BurgerBro",
+      jobTitle: ""
+    };
+
+    let vcard = `BEGIN:VCARD\n`;
+    vcard += `VERSION:3.0\n`;
+    vcard += `N:${contact.lastName};${contact.firstName};;;\n`;
+    vcard += `FN:${contact.firstName} ${contact.lastName}\n`;
+    vcard += `ORG:${contact.companyName}\n`;
+    vcard += `TITLE:${contact.jobTitle}\n`;
+    vcard += `TEL;TYPE=CELL:${contact.phone1}\n`;
+//    vcard += `TEL;TYPE=CELL:${contact.phone2}\n`;  // убери эту строчку если 1 номер
+    vcard += `EMAIL:${contact.email}\n`;
+    vcard += `URL:${contact.website}\n`;
+    vcard += `END:VCARD`;
+
+    const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${contact.firstName}.vcf`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  // === Контакт 2: Второй человек ===
+  document.getElementById('add-contact-2').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const contact = {
+      firstName: "BurgerBro ул.Котова",
+      lastName: "",
+      phone1: "+79592070550",
+  //    phone2: "+79590298419", //если не надо закомментировать
+      email: "",
+      website: "",
+      companyName: "BurgerBro",
+      jobTitle: ""
+    };
+
+    let vcard = `BEGIN:VCARD\n`;
+    vcard += `VERSION:3.0\n`;
+    vcard += `N:${contact.lastName};${contact.firstName};;;\n`;
+    vcard += `FN:${contact.firstName} ${contact.lastName}\n`;
+    vcard += `ORG:${contact.companyName}\n`;
+    vcard += `TITLE:${contact.jobTitle}\n`;
+    vcard += `TEL;TYPE=CELL:${contact.phone1}\n`;
+//    vcard += `TEL;TYPE=CELL:${contact.phone2}\n`; // Если не надо закомментировать
+    vcard += `EMAIL:${contact.email}\n`;
+    vcard += `URL:${contact.website}\n`;
+    vcard += `END:VCARD`;
+
+    const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${contact.firstName}.vcf`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+</script>t</body>
 </html>
