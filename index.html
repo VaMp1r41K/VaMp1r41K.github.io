@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BurgerBro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,7 +15,7 @@
       justify-content: center;
       align-items: center;
       color: #e0e0e0;
-      background-image: url('https://www.restoran.ru/upload/resize_cache/iblock/7b2/948_800_1/fee1fac243ddd8b0271d1257d8669ffb_1100x825_2_scaled.jpg');
+      background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -22,17 +23,19 @@
 
     body::before {
       content: '';
-      position: absolute;
+      position: fixed; /* Важно: fixed, а не absolute */
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7);
+	  min-height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
       z-index: -1;
+	  pointer-events: none; /* Чтобы не мешал кликам */
     }
 
     .container {
-      background: rgba(30, 30, 30, 0.8);
+      background: rgba(30, 30, 30, 0.85);
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -58,11 +61,12 @@
       color: #ffffff;
       margin: 15px 0 5px;
       font-size: 26px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.5);
     }
 
     p {
       color: #bbbbbb;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       font-size: 16px;
     }
 
@@ -70,13 +74,15 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      margin: 20px 0;
     }
 
     .links a {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       padding: 14px;
-      background: #fdd835;
-      color: #111;
       text-decoration: none;
       border-radius: 8px;
       font-size: 16px;
@@ -84,9 +90,10 @@
       transition: all 0.3s ease;
     }
 
-    .links a:hover {
-      background: #ffeb3b;
-      transform: translateY(-2px);
+    .links a i {
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
     }
 
     footer {
@@ -94,44 +101,191 @@
       color: #aaa;
       font-size: 12px;
     }
+
+    /* Стили кнопок */
+    .btn-red {
+      background: #d32f2f;
+      color: white;
+    }
+    .btn-red:hover {
+      background: #c62828;
+      transform: translateY(-2px);
+    }
+
+    .btn-green {
+      background: #388e3c;
+      color: white;
+    }
+    .btn-green:hover {
+      background: #2e7d32;
+      transform: translateY(-2px);
+    }
+
+    .btn-blue {
+      background: #0088cc;
+      color: white;
+    }
+    .btn-blue:hover {
+      background: #0077b3;
+      transform: translateY(-2px);
+    }
+
+    .btn-purple {
+      background: #4c75a3;
+      color: white;
+    }
+    .btn-purple:hover {
+      background: #3d5e80;
+      transform: translateY(-2px);
+    }
+
+    .btn-orange {
+      background: #ff9800;
+      color: white;
+    }
+    .btn-orange:hover {
+      background: #f57c00;
+      transform: translateY(-2px);
+    }
+
+    .btn-teal {
+      background: #00897b;
+      color: white;
+    }
+    .btn-teal:hover {
+      background: #00695c;
+      transform: translateY(-2px);
+    }
+
+    /* Акция */
+    .promo {
+      background: #d32f2f;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 15px 0;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    /* Расписание */
+    .schedule {
+      background: #d32f2f;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 15px 0;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    /* Галерея */
+    .gallery {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+    .gallery img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Карта */
+    .map-container {
+      margin: 25px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .map-container iframe {
+      border: none;
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Логотип -->
     <img src="https://sun1-55.userapi.com/s/v1/ig2/LKh2DEZHKjgBO9HhWFKypLCjYGg0d3KPkDXASYNd673ioGaCgSqNqP104gc7scsWmowKFQBl9iN6dLD-9DfkhUAu.jpg?size=400x400&quality=96&crop=80,0,400,400&ava=1" 
          alt="BurgerBro" class="profile-pic" />
 
+    <!-- Заголовок -->
     <h1>BurgerBro</h1>
     <p>Лучшая Бургерная в Краснодоне</p>
 
+    <!-- Акция -->
+<!    <div class="promo">
+<!      🎁 АКЦИЯ: При заказе от 500₽ — бесплатная доставка!
+<!    </div>
+
+    <!-- Режим работы -->
+    <p class="schedule">🕒 Работаем: ежедневно с 8:00 до 21:00</p>
+
+    <!-- Галерея бургеров -->
+<!    <div class="gallery"> 
+<!      <img src="https://media-cdn.tripadvisor.com/media/photo-s/15/8a/06/ba/burger.jpg" alt="Бургер"> 
+<!      <img src="https://media-cdn.tripadvisor.com/media/photo-s/15/8a/06/ba/burger.jpg" alt="Бургер"> 
+<!      <img src="https://media-cdn.tripadvisor.com/media/photo-s/15/8a/06/ba/burger.jpg" alt="Бургер"> 
+<!    </div> 
+
+    <!-- Кнопки -->
     <div class="links">
-      <a href="https://t.me/BurgerBr0" target="_blank">Telegram</a>
-      <a href="https://vk.com/krasnodon_burger_bro" target="_blank">VK</a>
-      <a href="#" id="add-contact-1" style="background: #ff9800;">➕ BurgerBro ул.Пионерская</a>
-      <a href="#" id="add-contact-2" style="background: #4caf50;">➕ BurgerBro ул.Котова</a>
+      <a href="tel:+79590298419" class="btn-green">
+        <i class="fas fa-phone"></i> Позвонить ул. Пионерская
+      </a>
+      <a href="tel:+79592070550" class="btn-teal">
+        <i class="fas fa-phone"></i> Позвонить ул. Котова
+      </a>
+      <a href="https://t.me/BurgerBr0" target="_blank" class="btn-blue">
+        <i class="fab fa-telegram"></i> Написать в Telegram
+      </a>
+      <a href="https://vk.com/krasnodon_burger_bro" target="_blank" class="btn-purple">
+        <i class="fab fa-vk"></i> Группа ВКонтакте
+      </a>
+	  <contacts> Добавить в контакты </contacts>
+      <a href="#" id="add-contact-1" class="btn-orange">
+        <i class="fas fa-user-plus"></i> Добавить: Пионерская
+      </a>
+      <a href="#" id="add-contact-2" class="btn-green">
+        <i class="fas fa-user-plus"></i> Добавить: Котова
+      </a>
     </div>
+
+	<!-- Карта Яндекса (вставь свой iframe сюда) -->
+	<div class="map-container">
+		<h3 style="color: #ffeb3b; text-align: left;">📍 Наши адреса</h3>
+		<iframe 
+			src="https://yandex.ru/map-widget/v1/?um=constructor%3Af107c6410f517da0739916fc2f99440a1684f1b2ceabcc6c9e11a3e50e58be55&width=100%&height=300&lang=ru_RU" 
+			width="100%" 
+			height="300" 
+			frameborder="0">
+		</iframe>
+    </div>
+
+    <!-- Кнопка "Открыть в Яндекс.Картах" -->
+<!    <a href="https://yandex.ru/maps/?text=Краснодон, BurgerBro" target="_blank" style="color: #0088cc; font-weight: bold; display: block; margin: 10px 0;">
+<!      → Открыть все точки в Яндекс.Картах
+<!    </a>
 
     <footer>&copy; 2025 BurgerBro inc</footer>
     <footer>Все права защищены</footer>
   </div>
 
+  <!-- Скрипт для контактов -->
   <script>
     document.getElementById('add-contact-1').addEventListener('click', function(e) {
       e.preventDefault();
-
       const contact = {
         firstName: "BurgerBro Пионерская",
-        phone1: "+79590298419",
+        phone: "+79590298419",
         companyName: "BurgerBro"
       };
-
-      let vcard = `BEGIN:VCARD\n`;
-      vcard += `VERSION:3.0\n`;
-      vcard += `FN:${contact.firstName}\n`;
-      vcard += `ORG:${contact.companyName}\n`;
-      vcard += `TEL;TYPE=CELL:${contact.phone1}\n`;
-      vcard += `END:VCARD`;
-
+      let vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.firstName}\nORG:${contact.companyName}\nTEL;TYPE=CELL:${contact.phone}\nEND:VCARD`;
       const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -145,20 +299,12 @@
 
     document.getElementById('add-contact-2').addEventListener('click', function(e) {
       e.preventDefault();
-
       const contact = {
         firstName: "BurgerBro Котова",
-        phone1: "+79592070550",
+        phone: "+79592070550",
         companyName: "BurgerBro"
       };
-
-      let vcard = `BEGIN:VCARD\n`;
-      vcard += `VERSION:3.0\n`;
-      vcard += `FN:${contact.firstName}\n`;
-      vcard += `ORG:${contact.companyName}\n`;
-      vcard += `TEL;TYPE=CELL:${contact.phone1}\n`;
-      vcard += `END:VCARD`;
-
+      let vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.firstName}\nORG:${contact.companyName}\nTEL;TYPE=CELL:${contact.phone}\nEND:VCARD`;
       const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
