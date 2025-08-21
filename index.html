@@ -176,7 +176,10 @@
 
 		/* Расписание */
 		.schedule {
-			background: #d32f2f;
+			margin: 25px 0;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 4px 12px rgba(253, 216, 53, 0.5);
 			color: white;
 			padding: 12px;
 			border-radius: 8px;
@@ -206,11 +209,19 @@
 			margin: 25px 0;
 			border-radius: 12px;
 			overflow: hidden;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+			box-shadow: 0 4px 12px rgba(255, 255, 255, 1);
 		}
 
 		.map-container iframe {
 			border: none;
+		}
+		
+		contacts {
+			width: 150px;
+			height: 100px;
+			object-fit: cover;
+			border-radius: 8px;
+			flex-shrink: 0;
 		}
 	</style>
 </head>
@@ -233,11 +244,11 @@
 		<p class="schedule">🕒 Работаем: ежедневно с 8:00 до 21:00</p>
 
 		<!-- Галерея бургеров -->
-	<!    <div class="gallery"> 
-	<!      <img src="https://media-cdn.tripadvisor.com/media/photo-s/15/8a/06/ba/burger.jpg" alt="Бургер"> 
-	<!      <img src="https://media-cdn.tripadvisor.com/media/photo-s/15/8a/06/ba/burger.jpg" alt="Бургер"> 
-	<!      <img src="https://media-cdn.tripadvisor.com/media/photo-s/15/8a/06/ba/burger.jpg" alt="Бургер"> 
-	<!    </div> 
+<!--	<div class="gallery"> 
+			<img src="https://media-cdn.tripadvisor.com/media/photo-s/15/8a/06/ba/burger.jpg" alt="Бургер"> 
+			<img src="https://media-cdn.tripadvisor.com/media/photo-s/15/8a/06/ba/burger.jpg" alt="Бургер"> 
+			<img src="https://media-cdn.tripadvisor.com/media/photo-s/15/8a/06/ba/burger.jpg" alt="Бургер"> 
+		</div>	-->
 
 		<!-- Кнопки -->
 		<div class="links">
@@ -253,7 +264,7 @@
 			<a href="https://vk.com/krasnodon_burger_bro" target="_blank" class="btn-purple">
 				<i class="fab fa-vk"></i> Группа ВКонтакте
 			</a>
-			<contacts> Добавить в контакты </contacts>
+			<div class="contacts"> Добавить в контакты </div>
 			<a href="#" id="add-contact-1" class="btn-orange">
 				<i class="fas fa-user-plus"></i> Добавить: Пионерская
 			</a>
@@ -264,64 +275,64 @@
 
 		<!-- Карта Яндекса (вставь свой iframe сюда) -->
 		<div class="map-container">
-			<h3 style="color: #ffeb3b; text-align: left;">📍 Наши адреса</h3>
+			<h3 style="color: #ffeb3b; text-align: center;">📍 Наши адреса</h3> <!-- left, center, right -->
 			<iframe 
 				src="https://yandex.ru/map-widget/v1/?um=constructor%3Af107c6410f517da0739916fc2f99440a1684f1b2ceabcc6c9e11a3e50e58be55&width=100%&height=300&lang=ru_RU" 
 				width="100%" 
-				height="300" 
+				height="400" 
 				frameborder="0">
 			</iframe>
 		</div>
 
 		<!-- Кнопка "Открыть в Яндекс.Картах" -->
-	<!    <a href="https://yandex.ru/maps/?text=Краснодон, BurgerBro" target="_blank" style="color: #0088cc; font-weight: bold; display: block; margin: 10px 0;">
-	<!      → Открыть все точки в Яндекс.Картах
-	<!    </a>
+<!--	   <a href="https://yandex.ru/maps/?text=Краснодон, Бургер Бро" target="_blank" style="color: #0088cc; font-weight: bold; display: block; margin: 10px 0;">
+	      → Открыть все точки в Яндекс.Картах
+	    </a> -->
 
 		<footer>&copy; 2025 BurgerBro inc</footer>
 		<footer>Все права защищены</footer>
 	</div>
 
 	<!-- Скрипт для контактов -->
-		<script>
-			document.getElementById('add-contact-1').addEventListener('click', function(e) 
-			{
-				e.preventDefault();
-				const contact = {
-					firstName: "BurgerBro Пионерская",
-					phone: "+79590298419",
-					companyName: "BurgerBro"
-				};
-				let vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.firstName}\nORG:${contact.companyName}\nTEL;TYPE=CELL:${contact.phone}\nEND:VCARD`;
-				const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
-				const url = URL.createObjectURL(blob);
-				const a = document.createElement('a');
-				a.href = url;
-				a.download = `${contact.firstName}.vcf`;
-				document.body.appendChild(a);
-				a.click();
-				document.body.removeChild(a);
-				URL.revokeObjectURL(url);
-			});
-
-		document.getElementById('add-contact-2').addEventListener('click', function(e) {
-		  e.preventDefault();
-		  const contact = {
-			firstName: "BurgerBro Котова",
-			phone: "+79592070550",
-			companyName: "BurgerBro"
-		  };
-		  let vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.firstName}\nORG:${contact.companyName}\nTEL;TYPE=CELL:${contact.phone}\nEND:VCARD`;
-		  const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
-		  const url = URL.createObjectURL(blob);
-		  const a = document.createElement('a');
-		  a.href = url;
-		  a.download = `${contact.firstName}.vcf`;
-		  document.body.appendChild(a);
-		  a.click();
-		  document.body.removeChild(a);
-		  URL.revokeObjectURL(url);
+	<script>
+		document.getElementById('add-contact-1').addEventListener('click', function(e) 
+		{
+			e.preventDefault();
+			const contact = {
+				firstName: "BurgerBro Пионерская",
+				phone: "+79590298419",
+				companyName: "BurgerBro"
+			};
+			let vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.firstName}\nORG:${contact.companyName}\nTEL;TYPE=CELL:${contact.phone}\nEND:VCARD`;
+			const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+			const url = URL.createObjectURL(blob);
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = `${contact.firstName}.vcf`;
+			document.body.appendChild(a);
+			a.click();
+			document.body.removeChild(a);
+			URL.revokeObjectURL(url);
 		});
-		</script>
-	</body>
+
+	document.getElementById('add-contact-2').addEventListener('click', function(e) {
+	  e.preventDefault();
+	  const contact = {
+		firstName: "BurgerBro Котова",
+		phone: "+79592070550",
+		companyName: "BurgerBro"
+	  };
+	  let vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.firstName}\nORG:${contact.companyName}\nTEL;TYPE=CELL:${contact.phone}\nEND:VCARD`;
+	  const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+	  const url = URL.createObjectURL(blob);
+	  const a = document.createElement('a');
+	  a.href = url;
+	  a.download = `${contact.firstName}.vcf`;
+	  document.body.appendChild(a);
+	  a.click();
+	  document.body.removeChild(a);
+	  URL.revokeObjectURL(url);
+	});
+	</script>
+</body>
 </html>
