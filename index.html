@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Мои ссылки</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 10px auto;
+      border: 3px solid #4285f4;
+    }
+    h1 {
+      color: #333;
+      margin: 15px 0 5px;
+      font-size: 24px;
+    }
+    p {
+      color: #666;
+      margin-bottom: 25px;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .links a {
+      display: block;
+      padding: 14px;
+      background: #4285f4;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    .links a:hover {
+      background: #3367d6;
+      transform: translateY(-2px);
+    }
+    footer {
+      margin-top: 30px;
+      color: #aaa;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Фото (можно убрать или заменить ссылку) -->
+    <img src="https://vk.com/photo649290551_457239103" alt="Твоё фото" class="profile-pic" />
+
+    <!-- Имя и описание -->
+    <h1>BurgerBro</h1>
+    <p>Лучшая Бургерная В Краснодоне</p>
+
+    <!-- Ссылки -->
+    <div class="links">
+      <a href="https://t.me/BurgerBr0" target="_blank">Telegram</a>
+      <a href="https://vk.com/krasnodon_burger_bro" target="_blank">VK</a>
+    </div>
+
+    <footer>
+      &copy; 2025 BurgerBro
+    </footer>
+  </div>
+</body>
+</html>
